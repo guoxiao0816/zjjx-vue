@@ -1,18 +1,30 @@
 <template>
-  <van-swipe :autoplay="6000" indicator-color="white">
-    <van-swipe-item v-for="(image, index) in images" :key="index">
-      <img v-lazy="image">
-    </van-swipe-item>
-    <div class="custom-indicator" slot="indicator">{{ current + 1 }}/4</div>
-  </van-swipe>
+  <div class="page">
+    <van-search v-model="value" placeholder="请输入搜索关键词" show-action shape="round" @search="onSearch">
+      <div slot="action" @click="onSearch">搜索</div>
+    </van-search>
+    <van-swipe :autoplay="6000" indicator-color="white" @change="onChange">
+      <van-swipe-item v-for="(image, index) in images" :key="index" :item="image">
+        <img v-lazy="image.ad_img">
+      </van-swipe-item>
+    </van-swipe>
+    <van-row gutter="20" class="catelist">
+      <van-col span="8" v-for="item in catelist.activity" :key="item.gc_id">
+        <img class="cate-item" v-lazy="item.gc_icon">
+      </van-col>
+    </van-row>
+  </div>
 </template>
 
 <script>
+import { Toast } from "vant";
 export default {
   data() {
     return {
       current: 0,
-      images: []
+      images: [],
+      catelist: [],
+      value: ""
     };
   },
   created() {
@@ -40,16 +52,50 @@ export default {
         }
       })
       .then(res => {
-        self.images = res.data;
+        self.images = res.data.data;
+      });
+
+    axios
+      .get("api/GoodsCategory/getCateList", {
+        params: {
+          c_client: "weixinSmall",
+          v: "1.1.0",
+          type: "goods_index"
+        }
+      })
+      .then(res => {
+        self.catelist = res.data.data;
       });
   },
   methods: {
-    onChange(index) {
-      this.current = index;
-    }
+    onChange(index) {},
+    onSearch() {}
   }
 };
 </script>
 
-<style>
+<style scoped>
+.page {
+  width: 750px;
+  background-color: #f8f8f9;
+}
+.van-swipe {
+  width: 710px;
+  margin: 20px;
+  height: 400px;
+}
+
+.van-swipe img {
+  width: 100%;
+  height: 100%;
+}
+.catelist {
+  width: 710px;
+  padding: 20px;
+}
+.cate-item {
+  width: 220px;
+  height: 200px;
+}
 </style>
+
