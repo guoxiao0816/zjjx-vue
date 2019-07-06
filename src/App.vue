@@ -1,9 +1,9 @@
 <template>
-  <v-app>
-    <v-content>
-      <HelloWorld/>
-    </v-content>
-  </v-app>
+  <div id="page">
+    <!-- <HelloWorld /> -->
+    <router-link to="add">写博客</router-link>
+    <router-view></router-view>
+  </div>
 </template>
 
 <script>
@@ -21,6 +21,11 @@ export default {
   }
 };
 </script>
-<style> 
-
+<style>
+@import "styles/default.css";
+#page {
+  width: 375px;
+  background-color: #f8f8f9;
+  margin: 0 auto;
+}
 </style>
