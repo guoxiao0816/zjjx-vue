@@ -38,7 +38,7 @@
         :key="good.g_id"
         :data-id="good.g_id"
       >
-        <img v-lazy="good.g_photo" />
+        <img v-lazy="good.g_photo" @click="gotoDetail(good.g_id)" />
         <p class="text pt10 pb5">{{good.g_name}}</p>
         <h4 class="colred font20 big">￥{{good.g_price}}</h4>
         <p class="font12 col8 line-t mt5">淘宝价: 暂无 京东: 暂无</p>
@@ -49,6 +49,7 @@
 
 <script>
 import { Toast } from "vant";
+// import { constants } from "crypto";
 export default {
   data() {
     return {
@@ -107,6 +108,15 @@ export default {
       if (this.value.length < 1) {
         Toast("请输入关键字");
       }
+    },
+    gotoDetail(id) {
+      console.log(id);
+      this.$router.push({
+        name: "gooddetail",
+        params: {
+          g_id: id
+        }
+      });
     }
   }
 };

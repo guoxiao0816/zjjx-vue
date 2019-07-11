@@ -1,20 +1,22 @@
 <template>
   <div id="page">
-    <!-- <HelloWorld /> -->
-    <router-link to="add">写博客</router-link>
+    <!-- <Header /> -->
     <router-view></router-view>
   </div>
 </template>
 
 <script>
 import HelloWorld from "./components/HelloWorld";
+import Header from "./components/Header";
 
 export default {
   name: "App",
   components: {
-    HelloWorld
+    HelloWorld,
+    Header
   },
   data() {
+    //业务逻辑里面定义的数据
     return {
       //
     };
