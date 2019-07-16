@@ -11,6 +11,12 @@ export default new Router({
   routes: [
     {
       path: '/',
+      redirect() {
+        return '/home'
+      }
+    },
+    {
+      path: '/home',
       name: 'home',
       component: Home
     },
@@ -31,6 +37,11 @@ export default new Router({
       path: '/good/detail',
       name: 'gooddetail',
       component: () => import('./views/goods/Gooddetail')
+    },
+    {
+      path: '/my',
+      name: 'my',
+      component: () => import('./views/My')
     }
   ]
 })

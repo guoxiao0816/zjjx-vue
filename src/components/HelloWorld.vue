@@ -49,7 +49,6 @@
 
 <script>
 import { Toast } from "vant";
-// import { constants } from "crypto";
 export default {
   data() {
     return {
@@ -110,7 +109,6 @@ export default {
       }
     },
     gotoDetail(id) {
-      console.log(id);
       this.$router.push({
         name: "gooddetail",
         params: {
@@ -125,6 +123,7 @@ export default {
 <style scoped>
 .page {
   min-height: 100vh;
+  padding-bottom: 50px;
 }
 .van-swipe {
   width: 355px;
@@ -160,7 +159,8 @@ export default {
   line-height: 45px;
   font-size: 16px;
   margin-top: 20px;
-  box-shadow: 0px 0px 5px 0px rgba(0, 0, 0, 0.1);
+  box-shadow: 0px 0px 10px 0px rgba(0, 0, 0, 0.1);
+  z-index: 1;
 }
 
 .goodslist {

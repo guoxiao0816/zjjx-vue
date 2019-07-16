@@ -1,24 +1,30 @@
 <template>
-  <div class="header" ref="head" @click="event($event)" data-id="123" :title="headtie">通用header头部</div>
+  <div class="header" @click="getHomeFun()" data-id="123" :title="title">
+    <span>{{title}}</span>
+    <button @click.stop="getParent()">getParent</button>
+  </div>
 </template>
 
 <script>
 export default {
+  props: ["title", "home"],
   data() {
     return {
-      headtie: "我是head"
+      vipMy: "专供My组件调用"
     };
   },
   mounted() {
-    // console.log("header Vue模块加载完毕");
-    console.log(this);
-    setTimeout(() => {
-      console.log(this.$refs.head); //获取DOM节点
-    }, 2000);
+    console.log("header Vue模块加载完毕");
   },
   methods: {
     event(e) {
       console.log(e.srcElement.dataset.id);
+    },
+    getHomeFun() {
+      this.home.getHome();
+    },
+    getParent() {
+      console.log(this.$parent.vipParent);
     }
   }
 };
