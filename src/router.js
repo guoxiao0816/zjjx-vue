@@ -1,5 +1,7 @@
 import Vue from 'vue'
 import Router from 'vue-router'
+
+
 import Home from './views/Home.vue'
 import Add from './views/Add.vue'
 
@@ -24,7 +26,7 @@ export default new Router({
       path: '/add',
       name: 'Add',
       component: Add
-    },
+    }, 
     {
       path: '/about',
       name: 'about',
@@ -34,8 +36,8 @@ export default new Router({
       component: () => import(/* webpackChunkName: "about" */ './views/About.vue')
     },
     {
-      path: '/good/detail',
       name: 'gooddetail',
+      path: '/good/detail/',
       component: () => import('./views/goods/Gooddetail')
     },
     {

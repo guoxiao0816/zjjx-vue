@@ -1,25 +1,13 @@
 <template>
   <div id="page">
-    <!-- <Header /> -->
     <router-view></router-view>
-    <!-- <Loading /> -->
-    <!-- <Footer /> -->
   </div>
 </template>
 
 <script>
-import HelloWorld from "./components/HelloWorld";
-import Header from "./components/Header";
-
-// import Loading from "./components/Loading";
-
 export default {
   name: "App",
-  components: {
-    HelloWorld,
-    Header,
-    // Loading
-  },
+  components: {},
   data() {
     //业务逻辑里面定义的数据
     return {

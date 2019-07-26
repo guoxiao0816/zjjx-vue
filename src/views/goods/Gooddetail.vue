@@ -48,7 +48,7 @@ export default {
   created() {},
   mounted() {
     this.getGoodData(this.g_id);
-    // console.log(this.$route.params);
+    console.log(this.$route.params);
   },
   methods: {
     getGoodData(g_id) {

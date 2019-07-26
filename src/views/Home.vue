@@ -1,6 +1,5 @@
 <template>
   <div class="home">
-    <Header :title="hometitle" :home="this"/>
     <HelloWorld />
     <Footer />
   </div>
@@ -10,6 +9,7 @@
 import HelloWorld from "../components/HelloWorld";
 import Header from "../components/Header";
 import Footer from "../components/Footer";
+import vueEvent from "../model/vueEvent";
 
 export default {
   components: {
@@ -19,12 +19,12 @@ export default {
   },
   data() {
     return {
-      hometitle: "我是home里面的首页"
+      hometitle: "我是home里面的数据"
     };
   },
   methods: {
-    getHome() {
-      console.log(this.hometitle);
+    emitMy() {
+      vueEvent.$emit("to-my", this.hometitle);
     }
   }
 };
